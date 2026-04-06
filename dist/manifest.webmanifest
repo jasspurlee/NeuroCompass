@@ -1,0 +1,17 @@
+{
+  "name": "NeuroCompass",
+  "short_name": "NeuroCompass",
+  "description": "Daily orientation, reminders, and shared support for stroke survivors and caregivers.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4fbfc",
+  "theme_color": "#0e6f84",
+  "icons": [
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
