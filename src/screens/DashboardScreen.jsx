@@ -2,62 +2,74 @@ import { Link } from "react-router-dom";
 import { ScreenCard } from "../components/ScreenCard";
 import { TaskPill } from "../components/TaskPill";
 import { TimePanel } from "../components/TimePanel";
-import { ReminderForm } from "../components/ReminderForm";
 import { useAppData } from "../state/AppDataContext";
 import { requestNotificationPermission } from "../lib/notifications";
 
 const quickLinks = [
-  { label: "Today's Plan", to: "/reminders" },
-  { label: "Add Reminder", to: "/reminders" },
+  { label: "My Day", to: "/orientation" },
   { label: "Conversation Notes", to: "/notes" },
-  { label: "Where Am I In My Day?", to: "/orientation" }
+  { label: "Caregiver Tools", to: "/caregiver" }
 ];
 
 export function DashboardScreen() {
   const {
-    addReminder,
     enablePushNotifications,
     disablePushNotifications,
     nextTask,
     pushSubscription,
-    status
+    status,
+    profile
   } = useAppData();
 
   return (
     <div className="screen-grid">
-      <ScreenCard accent="hero" title="Home Dashboard" subtitle="Simple steps for today.">
-        <TimePanel />
+      <ScreenCard accent="hero" title="Today" subtitle="One clear step at a time.">
+        <TimePanel mode="hero" />
+        <p className="support-copy">
+          You are on track, {profile.full_name || "friend"}. Start with the next step below.
+        </p>
         <div className="next-task-box">
-          <span className="section-label">Next task</span>
+          <span className="section-label">Next step</span>
           <TaskPill reminder={nextTask} />
         </div>
         <div className="button-grid">
-          {quickLinks.map((item) => (
-            <Link className="primary-button secondary-button" key={item.label} to={item.to}>
-              {item.label}
-            </Link>
-          ))}
+          <Link className="primary-button" to="/reminders">
+            See today&apos;s plan
+          </Link>
+          <Link className="secondary-button" to="/orientation">
+            Open My Day
+          </Link>
         </div>
       </ScreenCard>
 
       <ScreenCard
-        title="Add a reminder"
-        subtitle="Medication, appointment, or a daily task."
+        title="Helpful tools"
+        subtitle="Use these only when you need them."
         actions={
           <div className="card-actions">
-            <button className="ghost-button" onClick={() => requestNotificationPermission()}>
+            <button className="ghost-button" onClick={() => requestNotificationPermission()} type="button">
               Browser alerts
             </button>
             <button
               className="ghost-button"
               onClick={pushSubscription ? disablePushNotifications : enablePushNotifications}
+              type="button"
             >
               {pushSubscription ? "Turn off device alerts" : "Enable device alerts"}
             </button>
           </div>
         }
       >
-        <ReminderForm onSubmit={addReminder} />
+        <div className="button-grid button-grid-compact">
+          {quickLinks.map((item) => (
+            <Link className="secondary-button" key={item.label} to={item.to}>
+              {item.label}
+            </Link>
+          ))}
+          <Link className="secondary-button" to="/reminders">
+            Add a reminder
+          </Link>
+        </div>
         <p className="status-text">{status}</p>
       </ScreenCard>
     </div>

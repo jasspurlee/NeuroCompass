@@ -158,6 +158,11 @@ textarea {
   color: rgba(247, 255, 255, 0.84);
 }
 
+.support-copy,
+.orientation-summary p {
+  margin: 0;
+}
+
 .time-panel {
   display: grid;
   gap: 0.2rem;
@@ -212,6 +217,10 @@ textarea {
   margin-top: 1rem;
 }
 
+.button-grid-compact {
+  margin-top: 0;
+}
+
 .primary-button,
 .secondary-button,
 .nav-link {
@@ -231,6 +240,13 @@ textarea {
   background: #ffffff;
   color: var(--primary-strong);
   border: 2px solid var(--border);
+}
+
+.support-copy,
+.orientation-summary,
+.next-task-box {
+  display: grid;
+  gap: 0.65rem;
 }
 
 .ghost-button {
@@ -256,6 +272,28 @@ textarea {
   gap: 0.45rem;
   font-size: 0.98rem;
   font-weight: 700;
+}
+
+.choice-grid {
+  display: grid;
+  gap: 0.6rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.choice-chip {
+  min-height: 56px;
+  border-radius: 18px;
+  border: 2px solid var(--border);
+  background: #ffffff;
+  color: var(--primary-strong);
+  font-weight: 700;
+  padding: 0.8rem;
+  text-align: center;
+}
+
+.choice-chip-active {
+  background: var(--surface-strong);
+  border-color: var(--primary);
 }
 
 .text-input {
@@ -294,13 +332,25 @@ textarea {
   border-color: var(--primary);
 }
 
+.header-link:focus-visible,
+.nav-link:focus-visible,
+.ghost-button:focus-visible,
+.primary-button:focus-visible,
+.secondary-button:focus-visible,
+.choice-chip:focus-visible,
+.text-input:focus-visible,
+.text-area:focus-visible {
+  outline: 4px solid rgba(30, 152, 171, 0.28);
+  outline-offset: 3px;
+}
+
 .bottom-nav {
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0.4rem;
   padding: 0.65rem 0.8rem calc(0.65rem + env(safe-area-inset-bottom));
   background: rgba(244, 251, 252, 0.96);
@@ -336,6 +386,10 @@ textarea {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .choice-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .reminder-item {
     grid-template-columns: 1fr auto;
     align-items: center;
@@ -356,7 +410,18 @@ textarea {
   }
 
   .bottom-nav {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .screen-card-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .card-actions,
+  .choice-grid {
+    width: 100%;
+    grid-template-columns: 1fr;
   }
 }
 

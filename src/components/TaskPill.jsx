@@ -1,8 +1,8 @@
 import { formatShortDateTime } from "../lib/date";
 
-export function TaskPill({ reminder }) {
+export function TaskPill({ reminder, emptyLabel = "No task scheduled." }) {
   if (!reminder) {
-    return <div className="task-pill">No task scheduled.</div>;
+    return <div className="task-pill">{emptyLabel}</div>;
   }
 
   return (

@@ -8,7 +8,7 @@ export function RemindersScreen() {
 
   return (
     <div className="screen-grid">
-      <ScreenCard title="Today's plan" subtitle="Large, clear reminders in time order.">
+      <ScreenCard title="Today's plan" subtitle="Clear reminders in time order.">
         <div className="reminder-list">
           {reminders.map((reminder) => (
             <article className="reminder-item" key={reminder.id}>
@@ -31,7 +31,7 @@ export function RemindersScreen() {
         </div>
       </ScreenCard>
 
-      <ScreenCard title="New reminder" subtitle="Keep text short and specific.">
+      <ScreenCard title="Add a reminder" subtitle="Choose a simple time first, then save.">
         <ReminderForm onSubmit={addReminder} />
       </ScreenCard>
     </div>

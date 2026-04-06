@@ -10,10 +10,9 @@ import { InstallPrompt } from "./components/InstallPrompt";
 
 const navItems = [
   { to: "/", label: "Home" },
-  { to: "/orientation", label: "Orient" },
-  { to: "/reminders", label: "Reminders" },
-  { to: "/notes", label: "Notes" },
-  { to: "/caregiver", label: "Caregiver" }
+  { to: "/orientation", label: "My Day" },
+  { to: "/reminders", label: "Plan" },
+  { to: "/notes", label: "Notes" }
 ];
 
 export default function App() {
@@ -27,6 +26,9 @@ export default function App() {
           </div>
           <div className="header-actions">
             <InstallPrompt />
+            <NavLink className="header-link" to="/caregiver">
+              Caregiver
+            </NavLink>
             <NavLink className="header-link" to="/auth">
               Sign in
             </NavLink>
